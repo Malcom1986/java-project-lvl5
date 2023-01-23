@@ -1,5 +1,7 @@
-FROM gradle:7.2.0-jdk16
+FROM gradle:7.6.0-jdk17-alpine
 
-COPY . .
+WORKDIR /app
+
+COPY ./ .
 
 CMD ["gradle", "bootRun"]
