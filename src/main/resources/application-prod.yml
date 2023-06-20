@@ -1,12 +1,14 @@
 spring:
+  config:
+    activate:
+      on-profile: prod
   datasource:
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: none
-
-  liquibase:
-    contexts: prod
+    url: ${DATABASE_URL_SPRING}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+  jwt:
+    # min 32 symbols
+    secret: ${JWT_SECRET}
+    expiration: ${JWT_EXPIRATION}
+  rollbar:
+    token: ${ROLLBAR_TOKEN}

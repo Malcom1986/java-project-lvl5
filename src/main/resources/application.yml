@@ -1,11 +1,30 @@
 server:
-    port: ${PORT:5000}
+  port: ${PORT:8080}
 
+base-url: /api
+jwt:
+  secret: DevSecretKeySecretKeySecretKeySecretKeySecretKeySecretKeySecretKeySecretKey
+  expiration: 3600000
+
+rollbar:
+  token: 6b44f0336d5c49be901d487c25dfb320
+
+logging:
+  level:
+    root: INFO
 
 spring:
-    liquibase:
-        enabled: true
-        change-log: classpath:db/changelog/changelog-master.xml
-    jpa:
-        hibernate:
-            ddl-auto: create-drop
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  profiles:
+    default: dev
+
+springdoc:
+  swagger-ui:
+    path: /swagger.html
